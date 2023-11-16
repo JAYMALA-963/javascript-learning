@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Async</title>
+</head>
+
+<body style="background-color: #242424; color: white;">
+    <h1>Welcome to javascript.....</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    //========== { setTimeout } =========
+    //----- [ the code will execute after given period ot time ends ] ------
+    const sayNil = function () {
+        console.log('Hey Nil....');
+    }
+    const changeText = function () {
+        document.querySelector('h1').innerHTML = 'Welcome Nil...';
+    }
+    
+    const stopChange = setTimeout(changeText, 3000);
+    setTimeout(sayNil, 2000);
+
+    //============= {clearTimeout} ===========
+    //---------- [clears the async queue and stop the execution of setTimeout code] ---------
+    document.getElementById('stop').addEventListener('click', function () {
+        clearTimeout(stopChange);
+        console.log('STOPPED...');
+    })
+</script>
+
+</html>

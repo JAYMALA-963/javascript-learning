@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Async 2</title>
+</head>
+
+<body style="background-color: #242424; color: white;">
+    <h1>Welcome to javascript part 2.....</h1>
+    <button id="start">Start</button></br></br>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // // Declaring interval function
+    // const start = function () {
+    //     console.log("Interval", Date.now());
+    // }
+
+    // // Starting the interval
+    // document.getElementById('start').addEventListener('click', function () {
+    //     const interval = setInterval(start, 1000)
+    //     // Stopping the interval
+    //     document.getElementById('stop').addEventListener('click', function () {
+    //         clearInterval(interval);
+    //     })
+    // })
+    let interval;
+    const printMe = function () {
+        console.log('Nil roy');
+        console.log(21);
+    }
+    document.getElementById('start').addEventListener('click', function () {
+        interval = setInterval(printMe, 1000);
+    })
+    document.getElementById('stop').addEventListener('click', function () {
+        clearInterval(interval);
+    })
+
+</script>
+
+</html>

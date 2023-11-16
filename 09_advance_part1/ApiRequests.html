@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Request</title>
+</head>
+
+<body>
+    <!-- UNSENT<br>
+    0<br>
+    The request has not been initialized yet. So initially readyState is 0.<br>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
+    OPENED<br>
+    1<br>
+    When an open() method is called, the connection is getting established, and hence the status changes to 1.<br>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
+    HEADERS_RECEIVED<br>
+    2<br>
+    When the send() method is called, the request is received, and hence the status changes to 2 & the headers and
+    status will be available accordingly.<br>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
+    <br>
+    3<br>
+    During the time of processing the request, the downloading will be performed & the responseText carries the partial data & the status will change to 3.<br>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
+    DONE<br>
+    <br>
+    When the request is finished processing and it is about to deliver the response, then the status changes to 4.<br>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br> -->
+    <button id="display">display</button>
+
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = JSON.parse((this.responseText));
+            const followers = data.followers;
+            const avatar = data.avatar_url;
+            document.getElementById('display').addEventListener('click', displayCard)
+            function displayCard() {
+                document.body.appendChild(div)
+                document.body.appendChild(image)
+            }
+            const div = document.createElement('div')
+            div.textContent = followers;
+            const image = document.createElement('img')
+            image.setAttribute('src', avatar)
+        }
+    }
+
+    xhr.send();
+
+    //----- { create button and display card with avatar and follewer count when user clickes the button}
+
+</script>
+
+</html>
